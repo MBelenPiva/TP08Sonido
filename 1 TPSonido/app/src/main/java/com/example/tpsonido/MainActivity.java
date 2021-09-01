@@ -1,6 +1,8 @@
 package com.example.tpsonido;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
 import android.widget.Button;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
@@ -8,6 +10,8 @@ import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
     private Button btn1;
@@ -17,11 +21,24 @@ public class MainActivity extends AppCompatActivity {
     int sonido1,
             sonido2,
             sonido3;
+    VideoView videoJohn;
+    String URL= "https://www.youtube.com/watch?v=450p7goxZqg";
+
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+            videoJohn = (VideoView)findViewById(R.id.videoJohn);
+
+            videoJohn.setVideoURI(Uri.parse(URL));
+
+            MediaController mediaController = new MediaController(this);
+            videoJohn.setMediaController(mediaController);
+
+            videoJohn.start();
+
 
         ObtenerReferencias();
 
